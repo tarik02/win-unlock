@@ -1,0 +1,13 @@
+[tools]
+uv = "latest"
+
+[env]
+'_'.python.venv = ".venv"
+
+[settings]
+experimental = true
+
+[hooks]
+postinstall = '''
+uv sync
+'''
