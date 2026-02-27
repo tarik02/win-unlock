@@ -46,14 +46,14 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: actions/download-artifact@v7
+      - uses: actions/download-artifact@v8
         with:
           path: artifacts
 
       - name: Prepare release files
         run: |
           mkdir release-artifacts
-          mv artifacts/win-unlock/win-unlock.exe release-artifacts/win-unlock.exe
+          mv artifacts/win-unlock.exe release-artifacts/win-unlock.exe
 
       - uses: release-drafter/release-drafter@v6
         id: drafter
