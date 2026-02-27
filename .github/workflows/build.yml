@@ -14,9 +14,6 @@ jobs:
           - os: windows-latest
             artifact: win-unlock
             exe: win-unlock.exe
-          - os: windows-11-arm
-            artifact: win-unlock-arm
-            exe: win-unlock.exe
 
     runs-on: ${{ matrix.os }}
 
@@ -57,7 +54,6 @@ jobs:
         run: |
           mkdir release-artifacts
           mv artifacts/win-unlock/win-unlock.exe release-artifacts/win-unlock.exe
-          mv artifacts/win-unlock-arm/win-unlock.exe release-artifacts/win-unlock-arm.exe
 
       - uses: release-drafter/release-drafter@v6
         id: drafter
@@ -68,7 +64,6 @@ jobs:
         run: |
           gh release upload "${{ steps.drafter.outputs.tag_name }}" \
             release-artifacts/win-unlock.exe \
-            release-artifacts/win-unlock-arm.exe \
             --clobber \
             -R ${{ github.repository }}
         env:
